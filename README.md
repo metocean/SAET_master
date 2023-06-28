@@ -108,3 +108,38 @@ python saet_run.py --parameter=value
 |     --ks    |     Kernel   size. The main algorithm for shoreline extraction uses a kernel analysis over   each pixel in the SPL. Users can control this size, choosing between 3 or 5   pixels.    |     No    |     --ks=3     --ks=5    |     3    |
 |     --np    |     Number   of products. List of products to be processed in both “d” and “p” modes. The   list must consist of the identifiers of the products to be processed. These   identifiers can be obtained in the searching mode. This parameter supports   three different formats: list of identifiers, range of identifiers or all   identifiers.    |     No    |     --np=0,2,5,3   (list)     --np=5-10   (range)     --np=*   (all)    |     NONE    |
 |     --oa    |     Offline   Sentinel-2 activation. Some S2 products could be in offline mode. So, before   downloading them, they must be activated (from offline to online mode). See “considerations”   section.    |     No   except “or” mode    |     --oa=check     --oa=activate    |     check    |
+
+This is the text of help that appears when you run SAET with the --h parameter:
+```
+usage: saet_run.py [-h] --rm {os,dp,od,op,or} --fp FP --sd SD --cd CD --ed ED --mc [0-100] --lp {landsat_ot_c2_l1,landsat_ot_c2_l2,NONE} --ll LL --sp {S2MSI1C,S2MSI2A,NONE} --sl SL [--bc BC] [--of OF]
+                   [--wi {aweish,aweinsh,mndwi,kmeans}] [--th {0,1,2}] [--mm {erosion,dilation}] [--cl {0,1,2}] [--ks {3,5}] [--np NP] [--oa {check,activate}]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --rm {os,dp,od,op,or}
+                        Run mode (only search [s] / download and process [dp] / only donwload [od] / only process [op] / offline S2 retrieval [or]). --rm=os / --rm=dp / --rm=od / --rm=op / --rm=or.
+                        Default: os
+  --fp FP               path of the roi file for searching scenes (fp=c:\data oi.geojson), coordinates long/lat in this format: fp=long_min,lat_min,long_max,lat_max. Default: NONE
+  --sd SD               Start date for searching scenes (YYYYMMDD). --sd=20210101. Default:20200101
+  --cd CD               Central date for storm (YYYYMMDD). --sd=20210101. Default:20200102
+  --ed ED               End date for searching scenes (YYYYMMDD). --sd=20210101. Default:20200103
+  --mc [0-100]          maximum cloud coverture for the whole scene [0-100]. --mc=10
+  --lp {landsat_ot_c2_l1,landsat_ot_c2_l2,NONE}
+                        Landsat 8 product type. landsat_ot_c2_l1 or landsat_ot_c2_l2 or NONE. Default: landsat_ot_c2_l1
+  --ll LL               List of scenes for Landsat 8 (number of 6 digits). --ll=198032,199031. Default: NONE
+  --sp {S2MSI1C,S2MSI2A,NONE}
+                        Sentinel 2 product type (S2MSI1C / S2MSI2A). --s2=S2MSI1C / --s2=S2MSI2A / NONE. Default: S2MSI1C
+  --sl SL               List of scenes for Sentinel 2 (string of 5 characters). --sl=31TCF,30TYK. Default: NONE
+  --bc BC               beach code filter list. --bc=520,548 Default: NONE
+  --of OF               output data folder. --of=c:\data (windows) --of=/data. Default: SAET_HOME_PATH
+  --wi {aweish,aweinsh,mndwi,kmeans}
+                        Water index type (aweish, aweinsh,mndwi,kmeans). --wi=aweinsh. Default: aweinsh
+  --th {0,1,2}          Thresholding method (0: standard 0 value, 1: Otsu bimodal, 2: Otsu multimodal 3 classes). --th=0. Default: 0
+  --mm {erosion,dilation}
+                        Morphological method (erosion, dilation). --mm=dilation, Default: dilation
+  --cl {0,1,2}          Cloud mask level (0: no masking, 1: only opaque clouds, 2: opaque clouds + cirrus + cloud shadows). Default: 0
+  --ks {3,5}            Kernel size for points extraction. Default: 3
+  --np NP               List of number of products for download (only if --rm=d and --rm=p). [0,2,5,3] / [*] / [5-10]. Default: NONE
+  --oa {check,activate}
+                        Offline S2 activation (only if --rm=or). "check" / "activate". Default: "check"
+```
