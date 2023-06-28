@@ -84,7 +84,7 @@ python saet_run.py --parameter=value
 ```
 **Note:** whether using one or the other method (powershel or cmd), it would be a good idea to open these tools as administrator.
 
-# Parameters
+## Parameters
 
 |     Parameter    |     Description    |     Required    |     Usage / examples    |     Default value    |
 |---|---|---|---|---|
