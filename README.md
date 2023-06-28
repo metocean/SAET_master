@@ -68,10 +68,19 @@ The folder SAET contains the following files and subfolders:
 
 ## Configuration file
 
-The configuration file (saet_config.py) contains 6 sections that allows controlling several aspects to access the imagery servers and modify the algorithm workflow. Normally it will not be needed to change this file apart from the credential values, but if you want to do it, take in account this explanation about each section:
+The configuration file (saet_config.py) contains some sections that allows controlling several aspects to access the imagery servers and modify the algorithm workflow. Normally it will not be needed to change this file apart from the credential values, but if you want to do it, take in account this explanation about each section:
 -	Section “credentials”. **Change the asterisks characters by your own credentials to run SAET properly (see section 3).**
 -	Section “home folder”. It represents the path where SAET will be installed. All other subfolders will depend on it with relative paths.
 -	Section “auxiliary data”. Relative path to the auxiliar data needed to SAET. The name of each shapefile can be changed if it is required.
 -	Section “logging”. This section should be changed only by expert users. It controls the level of messages (severity) that SAET can return. For testing and debugging purposes, set this level to 10.
 -	Section results. It controls how the user can see the searching results.
 The rest of parameters that controls SAET are exposed as command line parameters (see section 5)
+
+## 5. RUNNING SAET
+
+One way to do this is by opening a PowerShell window or a command window (cmd). In Windows, go to the search bar and type "powershell" or "cmd". Run the script saet_run.py with parameters:
+```
+python saet_run.py --parameter=value
+```
+Note: whether using one or the other method (powershel or cmd), it would be a good idea to open these tools as administrator.
+
