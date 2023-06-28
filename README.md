@@ -176,3 +176,11 @@ Scene: S2A_MSIL1C_20230402T103621_N0509_R008_T30SYJ_20230402T160048 Cloud covera
 
 2023-06-28 16:29:06,192 INFO SAET algorithm have finished successfully.
 ```
+Results show a first list of products with its availability (online or offline). For every image, this last list contains the identifier (number of order in the list), the name, the cloud coverage percentage, and the difference in days between the central date and de image date. Besides, depending on the values of the variable “QUICKLOOK” (configuration file), an .html file with the quicklook images is opened automatically in the default browser. 
+
+**Note:** sometimes firefox may experiment problems showing quicklooks. If this is the case, try chrome as default browser.
+
+Once the searching results have been obtained, if we want to download and process just only the closest products to the central date (products 1 and 2), the suitable command line will be the following:
+```
+python saet_run.py --rm=dp --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=15 --lp=NONE --ll=NONE --sp=S2MSI1C --sl=30SYJ --np=1,2
+```
