@@ -30,4 +30,4 @@ SAET (V 1.0). Open-source code. Universitat Politècnica de València. http://ww
 ## 2. Workflow
 
 In this image, we can see the general workflow of the algorithm. The parameters can change depending on the expected results (see section 5).
-![Alt text](https://github.com/jpalomav/SAET_master/blob/master/doc/workflow.jpg)
+![Alt text](https://github.com/jpalomav/SAET_master/blob/doc/workflow.jpg)
