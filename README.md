@@ -33,6 +33,7 @@ In this image, we can see the general workflow of the algorithm. The parameters 
 
 ![Alt text](https://github.com/jpalomav/SAET_master/blob/main/doc/images/workflow.jpg)
 
+
 ## 3. REQUIREMENTS
 
 The tool uses Sentinel 2, Landsat 8 and Landsat 9 images as input. In this way, the first thing we need is to have and user and a password from Copernicus Scihub and USGS Landsat Explorer servers:
@@ -46,3 +47,22 @@ os.getenv('PASS_ESA', '******')
 os.getenv('USER_USGS', '******')
 os.getenv('PASS_USGS, '******')
 ```
+
+## 4. FOLDER STRUCTURE
+
+The folder SAET contains the following files and subfolders:
+-	saet_run.py. Main script. This script must be executed in command line mode.
+-	saet_tools.py. Module that contains all functions needed to run the algorithm.
+-	polynomial.py. Module with extra functions for surface interpolations
+-	saet_config. py file that contains several configuration variables (credentials for the satellite imagery servers, folder structure for results, etc.).
+-	examples_of_use.txt. Text file that contains several examples of use of the tool.
+-	aux_data. Folder containing:
+      * beaches.shp. Shapefile with all European areas classified as beaches. Based on “Coastal uses 2018” dataset (https://land.copernicus.eu/local/coastal-zones/coastal-zones-2018). This shapefile contains a field named “BEACH_CODE”, that will be copied to the final shoreline shapefile. This file is used to focus the shoreline extraction just only in these areas.
+      * landsat_grid.shp. Shapefile with all Landsat-8 footprints (https://www.usgs.gov/media/files/landsat-wrs-2-descending-path-row-shapefile). This shapefile has two fields named “PATH” and “ROW” that will be used to select a scene by its identifier.
+      * sentinel2_grid.shp. Shapefile with all Sentinel-2 footprints (based on the .kml file https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-2/data-products).
+      * map_director.qgz. Project file for QGIS with the three previous .shp files. It is useful for planning the process of downloading scenes.
+      * SAET.pdf. Document explaining the tool
+      * roi.geojson. File in geojson format containing an example of ROI (region of interest) to be used for searching scenes. To make easier the creation of this file (if it is needed), you can visit this website: https://geojson.io
+-	search_data. Folder containing the file for the result of the algorithm in “searching” mode. This file will have the format indicated in the configuration file (saet_config.py). In this way, the possible formats are html, txt or json.
+-	landsatxplore2. This folder contains the needed files for a modified version of the landsatxplore API to access to the Landsat imagery from USGS server. This have been necessary to update this library to the new Collection 2 of Landsat, which includes Landsat-9 product.
+
