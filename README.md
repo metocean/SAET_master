@@ -184,3 +184,20 @@ Once the searching results have been obtained, if we want to download and proces
 ```
 python saet_run.py --rm=dp --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=15 --lp=NONE --ll=NONE --sp=S2MSI1C --sl=30SYJ --np=1,2
 ```
+
+In case we want to reprocess any previous downloaded image, for example using other water index or other thresholding method, we only have to change these parameters and repeat the same command line but changing the run mode (--rm) to “op”. In this case, only the images previously downloaded will be reprocessed.
+
+```
+python saet_run.py --rm=op --wi=mndwi
+2023-06-28 17:11:26,536 INFO Starting SAET algorithm...
+
+List of scenes in the data folder:
+
+[0] S2A_MSIL1C_20230405T105031_N0509_R051_T30SYJ_20230405T160934
+[1] S2B_MSIL1C_20230420T104619_N0509_R051_T30SYJ_20230420T125145
+
+Number of images to be reprocessed?: 0,1
+```
+SAET will display a list of images already stored in the output data folder and will ask for the images to be processed. You must use the same syntax as the --np parameter.
+
+**Note:** more examples can be found in the file “examples_of_use.txt”.
