@@ -143,3 +143,36 @@ optional arguments:
   --oa {check,activate}
                         Offline S2 activation (only if --rm=or). "check" / "activate". Default: "check"
 ```
+
+## Examples of use
+
+* Searching for all Sentinel-2 (level 1C) scenes inside an area of interest (tile 30SYJ) and with less than 15% of cloud coverage:
+```
+python saet_run.py --rm=os --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=15 --lp=NONE --ll=NONE --sp=S2MSI1C --sl=30SYJ
+
+2023-06-28 16:29:02,542 INFO Starting SAET algorithm...
+
+2023-06-28 16:29:02,880 INFO Searching for S2 images...
+
+2023-06-28 16:29:04,066 INFO Found 6 products
+Scene: S2B_MSIL1C_20230420T104619_N0509_R051_T30SYJ_20230420T125145 Cloud coverage: 9.2 availability: online
+Scene: S2B_MSIL1C_20230417T103629_N0509_R008_T30SYJ_20230417T123856 Cloud coverage: 0.05 availability: online
+Scene: S2A_MSIL1C_20230412T103621_N0509_R008_T30SYJ_20230412T155912 Cloud coverage: 0.0 availability: online
+Scene: S2B_MSIL1C_20230407T103629_N0509_R008_T30SYJ_20230407T124138 Cloud coverage: 0.0 availability: online
+Scene: S2A_MSIL1C_20230405T105031_N0509_R051_T30SYJ_20230405T160934 Cloud coverage: 0.01 availability: online
+Scene: S2A_MSIL1C_20230402T103621_N0509_R008_T30SYJ_20230402T160048 Cloud coverage: 0.0 availability: online
+
+
+[0] Scene: S2B_MSIL1C_20230420T104619_N0509_R051_T30SYJ_20230420T125145 Cloud coverage: 9.2% 5 days Online
+[1] Scene: S2B_MSIL1C_20230417T103629_N0509_R008_T30SYJ_20230417T123856 Cloud coverage: 0.05% 2 days Online
+[*******] Central date:20230415
+[2] Scene: S2A_MSIL1C_20230412T103621_N0509_R008_T30SYJ_20230412T155912 Cloud coverage: 0.0% -3 days Online
+[3] Scene: S2B_MSIL1C_20230407T103629_N0509_R008_T30SYJ_20230407T124138 Cloud coverage: 0.0% -8 days Online
+[4] Scene: S2A_MSIL1C_20230405T105031_N0509_R051_T30SYJ_20230405T160934 Cloud coverage: 0.01% -10 days Online
+[5] Scene: S2A_MSIL1C_20230402T103621_N0509_R008_T30SYJ_20230402T160048 Cloud coverage: 0.0% -13 days Online
+
+
+2023-06-28 16:29:06,192 INFO Time passed: 0hour:0min:3sec
+
+2023-06-28 16:29:06,192 INFO SAET algorithm have finished successfully.
+```
