@@ -109,7 +109,7 @@ python saet_run.py --parameter=value
 |     --np    |     Number   of products. List of products to be processed in both “d” and “p” modes. The   list must consist of the identifiers of the products to be processed. These   identifiers can be obtained in the searching mode. This parameter supports   three different formats: list of identifiers, range of identifiers or all   identifiers.    |     No    |     --np=0,2,5,3   (list)     --np=5-10   (range)     --np=*   (all)    |     NONE    |
 |     --oa    |     Offline   Sentinel-2 activation. Some S2 products could be in offline mode. So, before   downloading them, they must be activated (from offline to online mode). See “considerations”   section.    |     No   except “or” mode    |     --oa=check     --oa=activate    |     check    |
 
-This is the text of help that appears when you run SAET with the --h parameter:
+This is the text of help that appears when you run SAET with the --h parameter (python saet_run.py --h):
 ```
 usage: saet_run.py [-h] --rm {os,dp,od,op,or} --fp FP --sd SD --cd CD --ed ED --mc [0-100] --lp {landsat_ot_c2_l1,landsat_ot_c2_l2,NONE} --ll LL --sp {S2MSI1C,S2MSI2A,NONE} --sl SL [--bc BC] [--of OF]
                    [--wi {aweish,aweinsh,mndwi,kmeans}] [--th {0,1,2}] [--mm {erosion,dilation}] [--cl {0,1,2}] [--ks {3,5}] [--np NP] [--oa {check,activate}]
