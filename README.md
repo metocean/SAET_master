@@ -223,3 +223,13 @@ After running the tool, a new structure of folders will be created inside the SA
 <p align="center">
      <img src="https://github.com/jpalomav/SAET_master/blob/main/doc/images/outputs.jpg">
 </p>
+
+- The “ouput_data” folder will be created if it does not exist. Inside, “data”, “sds” and “search_data” folders will be created. “data” folder contains subfolders to download and process every scene. 
+- Every type of image (L8, L9 or S2) is stored in its own folder, which is named as the name of the original image (scene folder). The scene folder contains all needed bands and auxiliary files (metadata, cloud mask, etc.). 
+- The “temp” folder is where all intermediate output files will be stored. 
+- Results (shorelines) will be stored into the “sds” folder, inside of scene folders, and will contain two versions of the shoreline in shapefile format: line format (*_lines.shp) and point format (*_points.shp). Shapefile shorelines are stored in the World GEodetic System 1984 (WGS84 - EPSG:4326). 
+- “search_data” folder contains an .html file with the different thumbnails corresponding with the found images.
+
+<p align="center">
+     <img src="https://github.com/jpalomav/SAET_master/blob/main/doc/images/results_html.jpg">
+</p>
