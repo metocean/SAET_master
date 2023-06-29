@@ -4,7 +4,18 @@ SHORELINE ANALYSIS AND EXTRACTION TOOL
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7488654.svg)](https://doi.org/10.5281/zenodo.7488654)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-## 1. INTRODUCTION
+## INDEX
+1. [INTRODUCTION](#id1)
+2. [WORKFLOW](#id2)
+3. [REQUIREMENTS](#id3)
+4. [FOLDER STRUCTURE](#id4)
+5. [RUNNING SAET](#id5)
+6. [OUTPUTS](#id6)
+7. [CONSIDERATIONS](#id7)
+8. [INSTALLATION](#id8)
+
+
+## 1. INTRODUCTION<a name="id1"></a>
 This software has been developed as part of the ECFAS (European Coastal Flood Awareness System) project by the Geo-Environmental Cartography and Remote Sensing Group (CGAT) at the Universitat Politècnica de València, Spain. It contains the core algorithm for shoreline extraction at a sub-pixel level. For detailed information on the algorithm, please refer to the following papers:
 
 - Palomar-Vázquez, J.; Pardo-Pascual, J.E.; Almonacid-Caballer, J.; Cabezas-Rabadán, C. Shoreline Analysis and Extraction Tool (SAET): A New Tool for the Automatic Extraction of Satellite-Derived Shorelines with Subpixel Accuracy. *Remote Sens.* 2023, 15, 3198. https://doi.org/10.3390/rs15123198
@@ -27,14 +38,14 @@ J. Palomar-Vázquez, J. Almonacid-Caballer, J.E. Pardo-Pascual, and C. Cabezas-R
 SAET (V 1.0). Open-source code. Universitat Politècnica de València. http://www.upv.es
 
 
-## 2. WORKFLOW
+## 2. WORKFLOW<a name="id2"></a>
 
 In this image, we can see the general workflow of the algorithm. The parameters can change depending on the expected results (see section 5).
 
 ![Alt text](https://github.com/jpalomav/SAET_master/blob/main/doc/images/workflow.jpg)
 
 
-## 3. REQUIREMENTS
+## 3. REQUIREMENTS<a name="id3"></a>
 
 The tool uses Sentinel 2, Landsat 8 and Landsat 9 images as input. In this way, the first thing we need is to have and user and a password from Copernicus Scihub and USGS Landsat Explorer servers:
 
@@ -48,7 +59,7 @@ os.environ['USER_USGS'] = os.getenv('USER_USGS', '********')
 os.environ['PASS_USGS'] = os.getenv('PASS_USGS', '********')
 ```
 
-## 4. FOLDER STRUCTURE
+## 4. FOLDER STRUCTURE<a name="id4"></a>
 
 The folder SAET contains the following files and subfolders:
 -	saet_run.py. Main script. This script must be executed in command line mode.
@@ -76,7 +87,7 @@ The configuration file (saet_config.py) contains some sections that allows contr
 -	Section results. It controls how the user can see the searching results.
 The rest of parameters that controls SAET are exposed as command line parameters (see section 5)
 
-## 5. RUNNING SAET
+## 5. RUNNING SAET<a name="id5"></a>
 
 One way to do this is by opening a PowerShell window or a command window (cmd). In Windows, go to the search bar and type "powershell" or "cmd". Run the script saet_run.py with parameters:
 ```
@@ -216,7 +227,7 @@ Next picture shows the workflow to run SAET in the most convenient way. The reco
      <img src="https://github.com/jpalomav/SAET_master/blob/main/doc/images/run_modes.jpg">
 </p>
 
-## 6. OUTPUTS
+## 6. OUTPUTS<a name="id6"></a>
 
 After running the tool, a new structure of folders will be created inside the SAET installation folder. Every time SAET is run, new folders are added to the structure. This structure can be similar as follows:
 
@@ -246,7 +257,7 @@ After running the tool, a new structure of folders will be created inside the SA
     * *_cp.shp: shapefile containing the extracted shoreline in point vector format, once it has been processed by the cleaning algorithm. This folder will be copied to the "SDS" folder by changing the prefix "_cp" to "_points", in both shapefile and json format.
     * *_cl.shp: shapefile containing the extracted shoreline in line vector format, once it has been processed by the cleaning algorithm. This folder will be copied to the "SDS" folder by changing the prefix "_cl" to "_lines", in both shapefile and json format.
 
-## 7. CONSIDERATIONS
+## 7. CONSIDERATIONS<a name="id7"></a>
 
 -	This tool downloads one or more L8, L9 or S2 scenes. It downloads the whole scene. In the case of L8-9, all bands are downloaded due to the server restrictions (it does not allow single band request or clipping), but the download use to be reasonably fast. In the case of S2, the download process can be a bit slow, so the script only downloads the bands that are needed (the server allows that feature). 
 
@@ -276,7 +287,7 @@ You can do the same directly using SAET. Follow these steps:
     3. Run SAET in “offline S2 retrieval” mode (--rm=or). You must use the parameter “--oa" (offline S2 activation) along with the run mode “or”. Use the value “--oa=check" to see which products are offline.
     4. Run SAET again in “offline S2 retrieval” mode (--rm=or), but this time using the value “--oa=activate”. 
 
-## 8. INSTALLATION
+## 8. INSTALLATION<a name="id8"></a>
 
 SAET has been developed in python and has been tested for the python version 3.9.7 (64 bits). You can install this version from by installing the file “Windows installer (64-bit)” form the link https://www.python.org/downloads/release/python-397. SAET needs some extra libraries to work. In the file “requirements_readme.txt” we can see the minimum versions of these libraries and some notes about the GDAL library:
 
