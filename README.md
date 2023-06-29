@@ -146,7 +146,7 @@ optional arguments:
 
 ## Examples of use
 
-* Searching for all Sentinel-2 (level 1C) scenes inside an area of interest (tile 30SYJ), with less than 15% of cloud coverage and within a date range 01-04-2023 to 30-04-2023 (central date or storm peak 15-04-2023:
+* Searching for all Sentinel-2 (level 1C) scenes inside an area of interest (tile 30SYJ), with less than 15% of cloud coverage and within a date range 01-04-2023 to 30-04-2023 (central date or storm peak 15-04-2023):
 ```
 python saet_run.py --rm=os --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=15 --lp=NONE --ll=NONE --sp=S2MSI1C --sl=30SYJ
 
@@ -202,7 +202,7 @@ SAET will display a list of images already stored in the output data folder and 
 
 **Note:** more examples can be found in the file “examples_of_use.txt”.
 
-## run mode election
+## Run mode election
 
 Next picture shows the workflow to run SAET in the most convenient way. The recommendation is:
 * Select your area of analysis and product of interest. The file map_director.qgz (QGIS) will be very useful to decide what scene (Landsat) or tile (Sentinel-2) will be 
