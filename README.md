@@ -25,7 +25,7 @@ This software has been developed as part of the ECFAS (European Coastal Flood Aw
 
 - CGAT: https://cgat.webs.upv.es
 - ECFAS: https://www.ecfas.eu
-- SAET [videotutorial](https://youtu.be/ygLoW4z1K4w)
+- SAET [ECFAS E-learning module](https://youtu.be/ygLoW4z1K4w)
 
 ## Copyright and License
 This open-source software is distributed under the GNU license and is the copyright of the UPV. It has been developed within the framework of the European ECFAS project by the following authors: Jesús Palomar Vázquez, Jaime Almonacid Caballer, Josep E. Pardo Pascual, and Carlos Cabezas Rabadán.
