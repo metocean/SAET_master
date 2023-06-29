@@ -246,7 +246,7 @@ After running the tool, a new structure of folders will be created inside the SA
     * *_cp.shp: shapefile containing the extracted shoreline in point vector format, once it has been processed by the cleaning algorithm. This folder will be copied to the "SDS" folder by changing the prefix "_cp" to "_points", in both shapefile and json format.
     * *_cl.shp: shapefile containing the extracted shoreline in line vector format, once it has been processed by the cleaning algorithm. This folder will be copied to the "SDS" folder by changing the prefix "_cl" to "_lines", in both shapefile and json format.
 
-# 7. CONSIDERATIONS
+## 7. CONSIDERATIONS
 
 -	This tool downloads one or more L8, L9 or S2 scenes. It downloads the whole scene. In the case of L8-9, all bands are downloaded due to the server restrictions (it does not allow single band request or clipping), but the download use to be reasonably fast. In the case of S2, the download process can be a bit slow, so the script only downloads the bands that are needed (the server allows that feature). 
 
@@ -275,3 +275,7 @@ You can do the same directly using SAET. Follow these steps:
     2. Maybe some products are in offline mode
     3. Run SAET in “offline S2 retrieval” mode (--rm=or). You must use the parameter “--oa" (offline S2 activation) along with the run mode “or”. Use the value “--oa=check" to see which products are offline.
     4. Run SAET again in “offline S2 retrieval” mode (--rm=or), but this time using the value “--oa=activate”. 
+
+## 8. INSTALLATION
+
+SAET has been developed in python and has been tested for the python version 3.9.7 (64 bits). You can install this version from by installing the file “Windows installer (64-bit)” form the link https://www.python.org/downloads/release/python-397. SAET needs some extra libraries to work. In the file “requirements_readme.txt” we can see the minimum versions of these libraries and some notes about the GDAL library:
