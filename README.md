@@ -216,7 +216,7 @@ Next picture shows the workflow to run SAET in the most convenient way. The reco
      <img src="https://github.com/jpalomav/SAET_master/blob/main/doc/images/run_modes.jpg">
 </p>
 
-# 6. OUTPUTS
+## 6. OUTPUTS
 
 After running the tool, a new structure of folders will be created inside the SAET installation folder. Every time SAET is run, new folders are added to the structure. This structure can be similar as follows:
 
