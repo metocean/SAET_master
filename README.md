@@ -146,7 +146,7 @@ optional arguments:
 
 ## Examples of use
 
-* Searching for all Sentinel-2 (level 1C) scenes inside an area of interest (tile 30SYJ) and with less than 15% of cloud coverage:
+* Searching for all Sentinel-2 (level 1C) scenes inside an area of interest (tile 30SYJ), with less than 15% of cloud coverage and within a date range 01-04-2023 to 30-04-2023 (central date or storm peak 15-04-2023:
 ```
 python saet_run.py --rm=os --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=15 --lp=NONE --ll=NONE --sp=S2MSI1C --sl=30SYJ
 
