@@ -282,7 +282,7 @@ SAET has been developed in python and has been tested for the python version 3.9
 
 |     Package    |     Version    |     Description    |
 |---|---|---|
-|     Python-dateutil    |     2.2.8    |     Functions   to extend the standard datetime module    |
+|     Python-dateutil    |     2.8.2    |     Functions   to extend the standard datetime module    |
 |     Numpy    |     1.21.2    |     Numeric   package    |
 |     Matplotlib    |     3.4.3    |     Visualization   library    |
 |     GDAL    |     3.3.1    |     Geospatial   Data Abstraction Library for raster geospatial data formats.    |
