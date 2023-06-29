@@ -212,6 +212,6 @@ Next picture shows the workflow to run SAET in the most convenient way. The reco
 * Anyway, if you want to reprocess any image previously downloaded, you can use the "only processing" run mode. This run mode will allow you to reprocess the images with other parameters (water index, threshol method, etc.) without having to download them again.
 * Only in case you want to analyse Sentinel-2 images and some of them are in "offline" mode, you can use the "Offline S2 activation" run mode, along with the parameter --oa, first time with the value "--oa=activate" to activate the product, and from time to time, with the value "--oa=check", to check if the products are online. **Note:** Only S2 online products can be downloaded. Once a product has been activated, remains in online mode during just few days. Finally, if you prefer, you also can do the activation process from the Landsat Earth Explorer platform.
 
-<center>
+<p align="center">
      <img src="https://github.com/jpalomav/SAET_master/blob/main/doc/images/run_modes.jpg">
-</center>
+</p>
