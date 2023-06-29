@@ -233,3 +233,15 @@ After running the tool, a new structure of folders will be created inside the SA
 <p align="center">
      <img src="https://github.com/jpalomav/SAET_master/blob/main/doc/images/results_html.jpg">
 </p>
+
+- The “temp” folder contains some intermediate files that may be interesting review in case we do not obtain the expected results:
+    * bb300_r.shp: shapefile containing the beaches file (in WGS84 geographic coordinates) reprojected to the coordinate reference system of the scene.
+    * clip_bb300_r.shp: previous shapefile cropped by the scene footprint.
+    * bb300_r.tif: previous file converted to binary raster (pixels classified as beach have the code 1).
+    * scene_footprint.shp: shapefile containing the footprint polygon of the scene.
+    * *_wi.tif: raster file containing the computed water index.
+    * *_cmask.tif: raster file containing the binary mask of the cloud coverage (pixels classified as clouds, cirrus or cloud shadows have the code 1).
+    * pl.tif: raster file containing the binary mask representing the extracted shoreline at pixel level (pixels classified as shoreline have the code 1).
+    * *_B11.shp (for Sentinel-2) or *_B6.shp (for Landsat 8-9): shapefile containing the extracted shoreline in point vector format, without having been processed by the cleaning algorithm.
+    * *_cp.shp: shapefile containing the extracted shoreline in point vector format, once it has been processed by the cleaning algorithm. This folder will be copied to the "SDS" folder by changing the prefix "_cp" to "_points", in both shapefile and json format.
+    * *_cl.shp: shapefile containing the extracted shoreline in line vector format, once it has been processed by the cleaning algorithm. This folder will be copied to the "SDS" folder by changing the prefix "_cl" to "_lines", in both shapefile and json format.
