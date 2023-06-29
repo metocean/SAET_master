@@ -201,3 +201,15 @@ Number of images to be reprocessed?: 0,1
 SAET will display a list of images already stored in the output data folder and will ask for the images to be processed. You must use the same syntax as the --np parameter.
 
 **Note:** more examples can be found in the file “examples_of_use.txt”.
+
+## run mode election
+
+Next picture shows the workflow to run SAET in the most convenient way. The recommendation is:
+* Select your area of analysis and product of interest. The file map_director.qgz (QGIS) will be very useful to decide what scene (Landsat) or tile (Sentinel-2) will be 
+* Always start with the "only searching mode".
+* If you are going to analyse just a few images (one or two images before and after the storm peak date), you can follow with the "downloading and processing" run mode.
+* In case you want to analyse a time series and in order to prevent conexion problems form the serves, it is recommendable to use "only download" run mode instead "downloading and processing".
+* Anyway, if you want to reprocess any image previously downloaded, you can use the "only processing" run mode. This run mode will allow you to reprocess the images with other parameters (water index, threshol method, etc.) without having to download them again.
+* Only in case you want to analyse Sentinel-2 images and some of them are in "offline" mode, you can use the "Offline S2 activation" run mode, along with the parameter --oa, first time with the value "--oa=activate" to activate the product, and from time to time, with the value "--oa=check", to check if the products are online. **Note:** Only S2 online products can be downloaded. Once a product has been activated, remains in online mode during just few days. Finally, if you prefer, you also can do the activation process from the Landsat Earth Explorer platform.
+
+![Alt text](https://github.com/jpalomav/SAET_master/blob/main/doc/images/run_modes.jpg)
