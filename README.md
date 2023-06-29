@@ -245,3 +245,33 @@ After running the tool, a new structure of folders will be created inside the SA
     * *_B11.shp (for Sentinel-2) or *_B6.shp (for Landsat 8-9): shapefile containing the extracted shoreline in point vector format, without having been processed by the cleaning algorithm.
     * *_cp.shp: shapefile containing the extracted shoreline in point vector format, once it has been processed by the cleaning algorithm. This folder will be copied to the "SDS" folder by changing the prefix "_cp" to "_points", in both shapefile and json format.
     * *_cl.shp: shapefile containing the extracted shoreline in line vector format, once it has been processed by the cleaning algorithm. This folder will be copied to the "SDS" folder by changing the prefix "_cl" to "_lines", in both shapefile and json format.
+
+# 7. CONSIDERATIONS
+
+-	This tool downloads one or more L8, L9 or S2 scenes. It downloads the whole scene. In the case of L8-9, all bands are downloaded due to the server restrictions (it does not allow single band request or clipping), but the download use to be reasonably fast. In the case of S2, the download process can be a bit slow, so the script only downloads the bands that are needed (the server allows that feature). 
+
+-	L8 and L9 products are only available from Collection 2. In USGS servers, Collection 1 are not available anymore as of December 30, 2022 (https://www.usgs.gov/landsat-missions/landsat-collection-1).
+
+-	The algorithm uses the cloud mask information. For L8-9, this information is stored in a .tif file, whereas for S2, it depends on the product (.gml format for the product 1C, and .tif format for the product 2A). This situation can change in the next months and some changes may be needed (see https://sentinels.copernicus.eu/web/sentinel/-/copernicus-sentinel-2-major-products-upgrade-upcoming).
+
+-	The shapefiles inside the folder “aux_data” are mandatory to make work the tool. If we need to change (removing, updating) some in the “beaches.shp” file, it is possible, but do not forget to maintain the field “BEACH_CODE” with unique identifiers.
+
+-	The final shoreline is provided in two versions (line and point) and has the field “BEACH_CODE” to facilitate the posterior analysis comparing the same beach section from different dates.
+
+-	One good way to begin using the tool is trying to see what are the single L8-9 or S2 scenes that we are interested in. For this goal, we can use the grid shapefiles for L8-9 or S2 (“aux_data” folder) and other online viewers, like “OE Browser” (https://apps.sentinel-hub.com/eo-browser). In this website we can see the needed product, their footprints, and their available dates and cloud coverage. Once we know this information, we can use the “searching by scenes mode” in the tool. Anyway, if you decide to use “quicklook” visualization, the .html file will help you to decide the best images for your purposes. 
+
+On the contrary, if we use the “searching by footprint mode”, the algorithm will search for the L8-9 or S2 nearest to the central data provided. This mode, sometimes, especially in S2 scenes can download more scenes than are needed due to the ROI can overlap with more than one S2 footprint, which leads to a longer downloading process time.
+
+- To avoid wasting time, can start using the tool firstly in “searching” mode and also in “searching by scenes mode”.
+
+- If we request the Sentinel-2 last images, could be possible that we only have access to the 1C product (2A product is not immediately available, and it is needed to spend some time to have access to this product). On the other hand, we also need to consider that 1C product has a cloud mask of lower quality than 2A product.
+
+- Finally, it is important to know that Copernicus maintains all Sentinel-2 images in “online” mode for one month after its acquisition. Older images will be in “offline” mode, which means that we have to request firstly the image and after an estimated time of one or two hours, the image will be in “online” mode for three days again. 
+
+- Sentinel-2 products older than 18 months (level 2A) or 12 months (level 1C) are not available directly. They are in offline mode. So, if you want to download these products, you must active them before. You can do this directly from the Copernicus Open Access Hub platform (https://scihub.copernicus.eu/), following the instructions that appear on “data restoration” section.
+ (https://scihub.copernicus.eu/userguide/DataRestoration).
+You can do the same directly using SAET. Follow these steps:
+    1. Run SAET in only search mode (--rm=os)
+    2. Maybe some products are in offline mode
+    3. Run SAET in “offline S2 retrieval” mode (--rm=or). You must use the parameter “--oa" (offline S2 activation) along with the run mode “or”. Use the value “--oa=check" to see which products are offline.
+    4. Run SAET again in “offline S2 retrieval” mode (--rm=or), but this time using the value “--oa=activate”. 
