@@ -298,5 +298,6 @@ The easier way to install SAET to avoid conflicts with other libraries already i
 
 ## Virtual environment creation and installation of SAET (recommended)
 
+**Note:** You can find a detailed document in this [pdf](https://github.com/jpalomav/SAET_master/blob/main/doc/tutorials/saet_installation_step_by_step.pdf)
 
 SAET has been developed in python and has been tested for the python version 3.9.7 (64 bits). You can install this version from by installing the file “Windows installer (64-bit)” form the link https://www.python.org/downloads/release/python-397. SAET needs some extra libraries to work. In the file “requirements_readme.txt” we can see the minimum versions of these libraries and some notes about the GDAL library:
