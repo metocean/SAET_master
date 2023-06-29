@@ -279,3 +279,23 @@ You can do the same directly using SAET. Follow these steps:
 ## 8. INSTALLATION
 
 SAET has been developed in python and has been tested for the python version 3.9.7 (64 bits). You can install this version from by installing the file “Windows installer (64-bit)” form the link https://www.python.org/downloads/release/python-397. SAET needs some extra libraries to work. In the file “requirements_readme.txt” we can see the minimum versions of these libraries and some notes about the GDAL library:
+
+|     Package    |     Version    |     Description    |
+|---|---|---|
+|     Python-dateutil    |     2.2.8    |     Functions   to extend the standard datetime module    |
+|     Numpy    |     1.21.2    |     Numeric   package    |
+|     Matplotlib    |     3.4.3    |     Visualization   library    |
+|     GDAL    |     3.3.1    |     Geospatial   Data Abstraction Library for raster geospatial data formats.    |
+|     Sentinelsat    |     1.1.0    |     Library   to access the Copernicus Open Data Hub servers    |
+|     Shapely    |     1.7.1    |     Library   to manage shapefiles    |
+|     Pyshp    |     2.1.3    |     Library   to manage shapefiles    |
+|     Scikit-image    |     0.18.3    |     Image   processing library    |
+|     Scikit-learn    |     1.0.2    |     Library   for data analysis and classification    |
+|     Scipy    |     1.7.1    |     Scientific   computing library    |
+|     Networkx    |     2.6.2    |     Library   for managing and analysing networks    |
+
+The easier way to install SAET to avoid conflicts with other libraries already installed in your python distribution is to create a virtual environment. Virtual environments are used to isolate the installation of the needed libraries for each project, avoiding problems among different versions of the same library. Therefore, is the most recommended method.
+
+## Virtual environment creation and installation of SAET (recommended)
+
+SAET has been developed in python and has been tested for the python version 3.9.7 (64 bits). You can install this version from by installing the file “Windows installer (64-bit)” form the link https://www.python.org/downloads/release/python-397. SAET needs some extra libraries to work. In the file “requirements_readme.txt” we can see the minimum versions of these libraries and some notes about the GDAL library:
