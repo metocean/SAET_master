@@ -300,4 +300,54 @@ The easier way to install SAET to avoid conflicts with other libraries already i
 
 **Note:** You can find a detailed document in this [pdf](https://github.com/jpalomav/SAET_master/blob/main/doc/tutorials/saet_installation_step_by_step.pdf)
 
-SAET has been developed in python and has been tested for the python version 3.9.7 (64 bits). You can install this version from by installing the file “Windows installer (64-bit)” form the link https://www.python.org/downloads/release/python-397. SAET needs some extra libraries to work. In the file “requirements_readme.txt” we can see the minimum versions of these libraries and some notes about the GDAL library:
+Once you have installed python (for example in “c:\python397_64”), follow the next steps (on Windows):
+1. Open a command prompt window.
+2. In this window, install the library “virtualenv” by typing 'pip install virtualenv'.
+3. Close the command prompt window.
+4. Create a new folder called "SAET_installation" (the name does not matter) in whatever location (for example 'c:\SAET_installation').
+5. Copy all files of SAET into this folder.
+6. Open a new command prompt window. This time, change the current folder to the SAET installation folder (type 'cd C:\SAET_installation')
+7. In the command prompt type: 'c:\Python397_64\Scripts\virtualenv env' ("env" is the name of a new virtual environment). This will create a new folder named “env”.
+8. Activate the new virtual environment by typing: 'env\Scripts\activate'.
+9. Install all needed libraries one by one typing 'pip install -r requirements_windows.txt' (for windows), or 'pip install -r requirements_linux.txt' (for linux).
+10. **Change your credentials in the file “saet_config.py”.**
+
+To check if SAET has been correctly installed, type the next sentence in the command prompt window:
+```
+python saet_run.py --h
+```
+
+If you have any problems with this way of installation, remove the virtual environment, create it again and try to install the libraries one by one manually. In the file “requirements_readme.txt” we can see the versions of these libraries and some notes about the GDAL library. 
+To remove the virtual environment, follow the next steps:
+
+If you have any problems with this way of installation, remove the virtual environment, create it again and try to install the libraries one by one manually. In the file “requirements_readme.txt” we can see the minimum versions of these libraries and some notes about the GDAL library. 
+To remove the virtual environment, follow the next steps:
+1. Close your command prompt window
+2. Delete the folder containing the virtual environment (in this case, the folder “env”)
+3. Repeat the steps 7 and 8 to create and activate again the virtual environment.
+4. Try the manual installation of each single library typing pip install (library_name)==(library_version). Example:  pip install numpy==1.21.2. **It is recommendable to do the manual installation in the same order as you can see in the table of libraries in the section 8.**
+
+**Important note for manual installation:**
+
+GDAL installation with pip command can be problematic. If errors occur during the installation of GDAL, so try to install the corresponding wheel file, according to your operative system (Windows or Linux).
+These files are in the folder "gdal_python_wheels":
+- Windows: GDAL-3.3.3-cp39-cp39-win_amd64.whl
+- Linux: GDAL-3.4.1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl
+
+The installation can be done using the pip command. The example for Windows would be like that: 
+
+```
+pip install ./gdal_python_wheels/GDAL-3.3.3-cp39-cp39-win_amd64.whl
+```
+
+## Virtual environment creation and installation of SAET on Linux
+1. Open a new terminal
+2. Type 'pip3 install virtualenv'
+3. Close the terminal
+4. Go to the SAET installation folder
+5. Open a new terminal in this folder
+6. Type 'virtualenv env' (“env” is the name of the virtual environment).
+7. Activate this new virtual environment typing 'source env/bin/activate'
+8. Install the libraries typing 'pip3 install -r requirements_linux.txt'
+9. Change your credentials in the file “saet_config.py”
+10. Type 'python3 saet_run.py --h'
