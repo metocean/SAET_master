@@ -48,10 +48,10 @@ In this image, we can see the general workflow of the algorithm. The parameters 
 
 ## 3. REQUIREMENTS<a name="id3"> </a><small>[(index)](#id0)</small>
 
-The tool uses Sentinel 2, Landsat 8 and Landsat 9 images as input. In this way, the first thing we need is to have username and password from Copernicus Scihub and USGS Landsat Explorer servers:
+The tool uses Sentinel 2, Landsat 8 and Landsat 9 images as input. In this way, the first thing needed is to have username and password from Copernicus Scihub and USGS Landsat Explorer servers:
 
 - **Access USGS Landsat Explorer service:** In this case, you need to do two things: register on the Landsat Explorer website and make a request to access the service “machine to machine” (m2m). For the first requirement, you must register on the website https://ers.cr.usgs.gov/register. Once you have your credentials, access the website https://earthexplorer.usgs.gov, and go to your profile settings. Click on the button “Go to Profile” and finally, on the option “Access Request”. There you can make a new request to the m2m service by filling out a form.
-Once you have your credentials for both data sources providers, you can edit the file “saet_config.py” (see structure section) changing the asterisks with your own credentials:
+Once you have your credentials for both data source providers you can edit the file “saet_config.py” (see structure section) by changing the asterisks with your own credentials:
 
 ```
 os.environ['USER_ESA'] = os.getenv('USER_ESA', '********')
@@ -65,28 +65,28 @@ os.environ['PASS_USGS'] = os.getenv('PASS_USGS', '********')
 The folder SAET contains the following files and subfolders:
 -	saet_run.py. Main script. This script must be executed in command line mode.
 -	saet_tools.py. Module that contains all functions needed to run the algorithm.
--	polynomial.py. Module with extra functions for surface interpolations
+-	polynomial.py. Module with extra functions for surface interpolation.
 -	saet_config. py file that contains several configuration variables (credentials for the satellite imagery servers, folder structure for results, etc.).
 -	examples_of_use.txt. Text file that contains several examples of use of the tool.
 -	aux_data. Folder containing:
-      * beaches.shp. Shapefile with all European areas classified as beaches. Based on “Coastal uses 2018” dataset (https://land.copernicus.eu/local/coastal-zones/coastal-zones-2018). This shapefile contains a field named “BEACH_CODE”, that will be copied to the final shoreline shapefile. This file is used to focus the shoreline extraction just only in these areas.
-      * landsat_grid.shp. Shapefile with all Landsat-8 footprints (https://www.usgs.gov/media/files/landsat-wrs-2-descending-path-row-shapefile). This shapefile has two fields named “PATH” and “ROW” that will be used to select a scene by its identifier.
-      * sentinel2_grid.shp. Shapefile with all Sentinel-2 footprints (based on the .kml file https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-2/data-products).
+      * beaches.shp. Shapefile with all the European areas classified as beaches. Based on “Coastal uses 2018” dataset (https://land.copernicus.eu/local/coastal-zones/coastal-zones-2018). This shapefile contains the field named “BEACH_CODE” that will be copied to the final shoreline shapefile. This file is used to focus the shoreline extraction into those areas.
+      * landsat_grid.shp. Shapefile including Landsat-8 footprints (https://www.usgs.gov/media/files/landsat-wrs-2-descending-path-row-shapefile). This shapefile has two fields named “PATH” and “ROW” that will be used to select a scene by its identifier.
+      * sentinel2_grid.shp. Shapefile including Sentinel-2 footprints (based on the .kml file https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-2/data-products).
       * map_director.qgz. Project file for QGIS with the three previous .shp files. It is useful for planning the process of downloading scenes.
-      * SAET.pdf. Document explaining the tool
-      * roi.geojson. File in geojson format containing an example of ROI (region of interest) to be used for searching scenes. To make easier the creation of this file (if it is needed), you can visit this website: https://geojson.io
+      * SAET.pdf. Document explaining the tool.
+      * roi.geojson. File in geojson format containing an example of ROI (region of interest) to be used for searching scenes. To make easier the creation of this file (if it is needed) you can visit this website: https://geojson.io
 -	search_data. Folder containing the file for the result of the algorithm in “searching” mode. This file will have the format indicated in the configuration file (saet_config.py). In this way, the possible formats are html, txt or json.
--	landsatxplore2. This folder contains the needed files for a modified version of the landsatxplore API to access to the Landsat imagery from USGS server. This have been necessary to update this library to the new Collection 2 of Landsat, which includes Landsat-9 product.
+-	landsatxplore2. This folder contains the needed files for a modified version of the landsatxplore API to access to the Landsat imagery from the USGS server. This have been necessary to update this library to the new Collection 2 of Landsat, which includes Landsat-9 product.
 
 ## Configuration file
 
-The configuration file (saet_config.py) contains some sections that allows controlling several aspects to access the imagery servers and modify the algorithm workflow. Normally it will not be needed to change this file apart from the credential values, but if you want to do it, take in account this explanation about each section:
--	Section “credentials”. **Change the asterisks characters by your own credentials to run SAET properly (see section 3).**
--	Section “home folder”. It represents the path where SAET will be installed. All other subfolders will depend on it with relative paths.
+The configuration file (saet_config.py) contains some sections that allows controlling several aspects to access the imagery servers and modify the algorithm workflow. Normally it will not be needed to modify this file apart from the credential values, but if you want to do it, take in account this explanation about each section:
+-	Section “credentials”. **Change the asterisks characters by your own credentials to properly run SAET (see section 3).**
+-	Section “home folder”. It represents the path where SAET will be installed. All other subfolders will depend on it by employing relative paths.
 -	Section “auxiliary data”. Relative path to the auxiliar data needed to SAET. The name of each shapefile can be changed if it is required.
 -	Section “logging”. This section should be changed only by expert users. It controls the level of messages (severity) that SAET can return. For testing and debugging purposes, set this level to 10.
 -	Section results. It controls how the user can see the searching results.
-The rest of parameters that controls SAET are exposed as command line parameters (see section 5)
+The rest of parameters that control SAET are exposed as command line parameters (see section 5)
 
 ## 5. RUNNING SAET<a name="id5"> </a><small>[(index)](#id0)</small>
 
@@ -197,7 +197,7 @@ Once the searching results have been obtained, if we want to download and proces
 python saet_run.py --rm=dp --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=15 --lp=NONE --ll=NONE --sp=S2MSI1C --sl=30SYJ --np=1,2
 ```
 
-In case we want to reprocess any previous downloaded image, for example using other water index or other thresholding method, we only have to change these parameters and repeat the same command line but changing the run mode (--rm) to “op”. In this case, only the images previously downloaded will be reprocessed.
+In case we want to reprocess any previous downloaded image, for example using other water index or thresholding method, we only have to change these parameters and repeat the same command line but changing the run mode (--rm) to “op”. In this case, the images previously downloaded will be reprocessed.
 
 ```
 python saet_run.py --rm=op --wi=mndwi
@@ -217,12 +217,12 @@ SAET will display a list of images already stored in the output data folder and 
 ## Run mode election
 
 Next picture shows the workflow to run SAET in the most convenient way. The recommendation is:
-* Select your area of analysis and product of interest. The file map_director.qgz (QGIS) will be very useful to decide what scene (Landsat) or tile (Sentinel-2) will be 
+* Select your area of analysis and product of interest. The file map_director.qgz (QGIS) will be very useful to decide which scene (Landsat) or tile (Sentinel-2) will be used.
 * Always start with the "only searching mode".
 * If you are going to analyse just a few images (one or two images before and after the storm peak date), you can follow with the "downloading and processing" run mode.
 * In case you want to analyse a time series and in order to prevent conexion problems form the serves, it is recommendable to use "only download" run mode instead "downloading and processing".
-* Anyway, if you want to reprocess any image previously downloaded, you can use the "only processing" run mode. This run mode will allow you to reprocess the images with other parameters (water index, threshol method, etc.) without having to download them again.
-* Only in case you want to analyse Sentinel-2 images and some of them are in "offline" mode, you can use the "Offline S2 activation" run mode, along with the parameter --oa, first time with the value "--oa=activate" to activate the product, and from time to time, with the value "--oa=check", to check if the products are online. **Note:** Only S2 online products can be downloaded. Once a product has been activated, remains in online mode during just few days. Finally, if you prefer, you also can do the activation process from the Landsat Earth Explorer platform.
+* Anyway, if you want to reprocess any image previously downloaded, you can use the "only processing" run mode. This mode will allow you to reprocess the images with other parameters (water index, threshol method, etc.) without having to download them again.
+* Only in case you want to analyse Sentinel-2 images and some of them are in "offline" mode, you can use the "Offline S2 activation" run mode, along with the parameter "--oa", first time with the value "--oa=activate" to activate the product, and from time to time, with the value "--oa=check", to check if the products are online. **Note:** Only S2 online products can be downloaded. Once a product has been activated, it remains in online mode just for a few days. Finally, if you prefer, you also can do the activation process from the Landsat Earth Explorer platform.
 
 <p align="center">
      <img src="https://github.com/jpalomav/SAET_master/blob/main/doc/images/run_modes.jpg">
@@ -260,7 +260,7 @@ After running the tool, a new structure of folders will be created inside the SA
 
 ## 7. CONSIDERATIONS<a name="id7"> </a><small>[(index)](#id0)</small>
 
--	This tool downloads one or more L8, L9 or S2 scenes. It downloads the whole scene. In the case of L8-9, all bands are downloaded due to the server restrictions (it does not allow single band request or clipping), but the download use to be reasonably fast. In the case of S2, the download process can be a bit slow, so the script only downloads the bands that are needed (the server allows that feature). 
+-	This tool downloads one or more L8, L9 or S2 scenes, and it downloads the whole scene. In the case of L8-9, due to the server restrictions all the bands are downloaded (it does not allow single band request or clipping), althought it is a reasonably fast process. In the case of S2, the download process can be a bit slow, but in this case the script only downloads the bands that are needed for the shoreline extraction (the server does allow that feature). 
 
 -	L8 and L9 products are only available from Collection 2. In USGS servers, Collection 1 are not available anymore as of December 30, 2022 (https://www.usgs.gov/landsat-missions/landsat-collection-1).
 
