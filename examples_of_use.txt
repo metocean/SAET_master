@@ -1,0 +1,91 @@
+NOTE 1: "C:\Python397_64\python" folder would be the folder where python is installed (it is not needed if your python installation path is in the PATH system environment variable)
+NOTE 2: maximum cloud percentage for all examples is 30%
+
+
+SAET help
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --h
+
+
+RUNING SAET IN "ONLY SEARCHING" MODE *************************************************************************************************************************************************************************************
+
+Searching for multiple level 1C Sentinel-2 tiles using footprint (ROI)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=os --fp=-0.3199,39.1034,-0.1414,39.2503 --sd=20230401 --cd=20230415 --ed=20230430 --mc=30 --lp=NONE --ll=NONE --sp=S2MSI1C --sl=NONE
+
+
+Searching for a single level 1C Sentinel-2 tile without footprint 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=os --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=30 --lp=NONE --ll=NONE --sp=S2MSI1C --sl=30SYJ
+
+
+Searching for multiple collection 2-level 1 Landsat-8 scenes using footprint
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=os --fp=-0.3199,39.1034,-0.1414,39.2503 --sd=20230401 --cd=20230415 --ed=20230430 --mc=30 --lp=landsat_ot_c2_l1 --ll=NONE --sp=NONE --sl=NONE
+
+
+Searching for a single collection 2-level 1 Landsat-8 scene without footprint
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=os --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=30 --lp=landsat_ot_c2_l1 --ll=198033 --sp=NONE --sl=NONE
+
+
+Searching for a single collection 2-level 1 Landsat-8 scene without footprint, using a custom output data folder (SAET will create the folder "c:/project1/output_data"). 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=os --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=30 --lp=landsat_ot_c2_l1 --ll=198033 --sp=NONE --sl=NONE --of="c:/project1"
+
+
+Searching for a single collection 2-level 1 Landsat-8 scene and a single level 1C Sentinel-2 tile without footprint
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=os --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=30 --lp=landsat_ot_c2_l1 --ll=198033 --sp=S2MSI1C --sl=30SYJ
+
+
+RUNING SAET IN "DOWNLOADING AND PROCESSING" MODE *************************************************************************************************************************************************************************
+
+Donwloading and processing two dates from multiple collection 2-level 1 Landsat-8 scenes using footprint (the numbers for these two products come from the list obtained when SAET has be run in "only searching" mode)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=dp --fp=-0.3199,39.1034,-0.1414,39.2503 --sd=20230401 --cd=20230415 --ed=20230430 --mc=30 --lp=landsat_ot_c2_l1 --ll=NONE --sp=NONE --sl=NONE --np=2,3
+
+
+Donwloading and processing two dates from a single level 1C Sentine-2 tile without footprint
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=dp --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=30 --lp=NONE --ll=NONE --sp=S2MSI1C --sl=30SYJ --np=3,5
+
+
+Donwloading and processing two dates from a single level 1C Sentine-2 tile without footprint, using a custom output data folder (SAET will create the folder "c:/project1/output_data"). 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=dp --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=30 --lp=NONE --ll=NONE --sp=S2MSI1C --sl=30SYJ --np=3,5 --of="c:/project1"
+
+
+Donwloading and processing one date from a single collection 2-level 1 Landsat-8 scene and one date from a single level 1C Sentine-2 tile without footprint
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=dp --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=30 --lp=landsat_ot_c2_l1 --ll=198033 --sp=S2MSI1C --sl=30SYJ --np=1,7
+
+
+RUNING SAET IN "ONLY DOWNLOADING" MODE ***********************************************************************************************************************************************************************************
+
+Only downloding multiple Landsat8/9 scenes (collection-2, level 1) without footprint
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=od --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=30 --lp=landsat_ot_c2_l1 --ll=198033 --sp=NONE --sl=NONE --np=0,1
+
+
+Only downloding two dates from a single Landsat scene (collection-2, level 1) without footprint, using a custom output data folder (SAET will create the folder "c:/project1/output_data").
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=od --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=30 --lp=landsat_ot_c2_l1 --ll=198033 --sp=NONE --sl=NONE --of="c:/project1" --np=0,1
+
+
+Only downloding one date from a single collection 2-level 1 Landsat-8/9 scene and one date from a single level 2A Sentine-2 tile without footprint
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=od --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=30 --lp=landsat_ot_c2_l1 --ll=198033 --sp=S2MSI2A --sl=30SYJ --np=1,7
+
+
+RUNING SAET IN "ONLY PROCESSING" MODE ************************************************************************************************************************************************************************************
+
+Processing only the scenes stored in the output data folder (by default in the SAET installation folder) tunning the parameters of water index and cloud masking severity 
+The number of products to be processed is indicated on the window terminal, answering the question: Number of images to be reprocessed?:)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=op --wi=mndwi --cl=1
+
+Only processing scenes stored in a custom data folder tunning the parameters of water index, cloud masking severity and filtering by beach code (extraction only in two beaches).
+The number of products to be processed is indicated on the window terminal, answering the question: Number of images to be reprocessed?:)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Python397_64\python saet_run.py --rm=op --wi=mndwi --cl=1 --bc=1683
