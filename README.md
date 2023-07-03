@@ -276,8 +276,6 @@ After running the tool, a new structure of folders will be created inside the SA
 
 - If we request the Sentinel-2 last images, could be possible that we only have access to the 1C product (2A product is not immediately available, and it is needed to spend some time to have access to this product). On the other hand, we also need to consider that 1C product has a cloud mask of lower quality than 2A product.
 
-- Finally, it is important to know that Copernicus maintains all Sentinel-2 images in “online” mode for one month after its acquisition. Older images will be in “offline” mode, which means that we have to request firstly the image and after an estimated time of one or two hours, the image will be in “online” mode for three days again. 
-
 - Sentinel-2 products older than 18 months (level 2A) or 12 months (level 1C) are not available directly. They are in offline mode. So, if you want to download these products, you must active them before. You can do this directly from the Copernicus Open Access Hub platform (https://scihub.copernicus.eu/), following the instructions that appear on “data restoration” section.
  (https://scihub.copernicus.eu/userguide/DataRestoration).
 You can do the same directly using SAET. Follow these steps:
