@@ -16,6 +16,15 @@ SHORELINE ANALYSIS AND EXTRACTION TOOL
 
 ## 1. INTRODUCTION<a name="id1"> </a><small>[(index)](#id0)</small>
 
+SAET is a software for the extraction and analysis of coastlines using satellite images from the Sentinel-2 series (levels 1C and 2A) and Landsat 8-9 (collection 2, levels 1 and 2). It is primarily focused on studying the impact of coastal storms, allowing the determination of the coastline position before and after the storm to evaluate its effects. Although this is its main function, SAET can also be used for temporal analysis and to study the evolution of any event (natural or anthropogenic). Its main features are as follows:
+
+- Direct access to official satellite image servers: ESA and USGS.
+- Download and processing of entire scenes, allowing coverage of large areas affected by storms.
+- Numerous configuration parameters (different types of water indices, segmentation thresholds, etc.) that make SAET a highly flexible software capable of adapting to different scene conditions.
+- Visualization of QUICKLOOK images in HTML format.
+- Activation of offline Sentinel-2 images from within the software.
+- Output of coastlines in shapefile format (point and line) in the WGS84 spatial reference system (EPSG: 4326).
+
 This software has been developed as part of the ECFAS (European Coastal Flood Awareness System) project by the Geo-Environmental Cartography and Remote Sensing Group (CGAT) at the Universitat Politècnica de València, Spain. It contains the core algorithm for shoreline extraction at a sub-pixel level. For detailed information on the algorithm, please refer to the following papers:
 
 - Palomar-Vázquez, J.; Pardo-Pascual, J.E.; Almonacid-Caballer, J.; Cabezas-Rabadán, C. Shoreline Analysis and Extraction Tool (SAET): A New Tool for the Automatic Extraction of Satellite-Derived Shorelines with Subpixel Accuracy. *Remote Sens.* 2023, 15, 3198. https://doi.org/10.3390/rs15123198
