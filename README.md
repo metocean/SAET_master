@@ -21,6 +21,7 @@ SAET is a software for the extraction and analysis of coastlines using satellite
 - Direct access to official satellite image servers: ESA and USGS.
 - Download and processing of entire scenes, allowing coverage of large areas affected by storms.
 - Numerous configuration parameters (different types of water indices, segmentation thresholds, etc.) that make SAET a highly flexible software capable of adapting to different scene conditions.
+- Sub-pixel algorithm for shoreline extraction. 
 - Visualization of QUICKLOOK images in HTML format.
 - Activation of offline Sentinel-2 images from within the software.
 - Output of coastlines in shapefile format (point and line) in the WGS84 spatial reference system (EPSG: 4326).
