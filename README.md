@@ -16,7 +16,7 @@ SHORELINE ANALYSIS AND EXTRACTION TOOL
 
 ## 1. INTRODUCTION<a name="id1"> </a><small>[(index)](#id0)</small>
 
-SAET is a software for the extraction and analysis of coastlines using satellite images from the Sentinel-2 series (levels 1C and 2A) and Landsat 8-9 (collection 2, levels 1 and 2). It is primarily focused on studying the impact of coastal storms, allowing the determination of the coastline position before and after the storm to evaluate its effects. Although this is its main function, SAET can also be used for temporal analysis and to study the evolution of any event (natural or anthropogenic). Its main features are as follows:
+SAET is a software for the extraction and analysis of shorelines using satellite images from the Sentinel-2 series (levels 1C and 2A) and Landsat 8-9 (collection 2, levels 1 and 2). It is primarily focused on studying the impact of coastal storms, allowing the determination of the coastline position before and after the storm to evaluate its effects. Although this is its main function, SAET can also be used for temporal analysis and to study the evolution of any event (natural or anthropogenic). Its main features are as follows:
 
 - Direct access to official satellite image servers: ESA and USGS.
 - Download and processing of entire scenes, allowing coverage of large areas affected by storms.
