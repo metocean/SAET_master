@@ -16,17 +16,17 @@ SHORELINE ANALYSIS AND EXTRACTION TOOL
 
 ## 1. INTRODUCTION<a name="id1"> </a><small>[(index)](#id0)</small>
 
-SAET is a software for the extraction and analysis of shorelines using satellite images from the Sentinel-2 series (levels 1C and 2A) and Landsat 8-9 (collection 2, levels 1 and 2). It is primarily focused on studying the impact of coastal storms, allowing the determination of the coastline position before and after the storm to evaluate its effects. Although this is its main function, SAET can also be used for temporal analysis and to study the evolution of any event (natural or anthropogenic). Its main features are as follows:
+SAET is a software for the extraction and analysis of shorelines using satellite images from the Sentinel-2 series (levels 1C and 2A) and Landsat 8 and 9 (collection 2, levels 1 and 2). It is primarily focused on studying the impact of coastal storms, allowing the determination of the shoreline position before and after the storm to evaluate its effects. Although this is its main function, SAET can also be used for temporal analysis and to study the evolution of any event (natural or anthropogenic). The main features are as follows:
 
 - Direct access to official satellite image servers: ESA and USGS.
 - Download and processing of entire scenes, allowing coverage of large areas affected by storms.
-- Numerous configuration parameters (different types of water indices, segmentation thresholds, etc.) that make SAET a highly flexible software capable of adapting to different scene conditions.
+- Numerous configuration parameters (different types of water indices, segmentation thresholds, etc.) that make SAET a highly flexible software capable of being adapted to different scene conditions.
 - Sub-pixel algorithm for shoreline extraction. 
 - Visualization of QUICKLOOK images in HTML format.
-- Activation of offline Sentinel-2 images from within the software.
-- Output of coastlines in shapefile format (point and line) in the WGS84 spatial reference system (EPSG: 4326).
+- Activation of offline Sentinel-2 images.
+- Output of the shoreline positions in shapefile format (point and line) in the WGS84 spatial reference system (EPSG: 4326).
 
-This software has been developed as part of the ECFAS (European Coastal Flood Awareness System) project by the Geo-Environmental Cartography and Remote Sensing Group (CGAT) at the Universitat Politècnica de València, Spain. It contains the core algorithm for shoreline extraction at a sub-pixel level. For detailed information on the algorithm, please refer to the following papers:
+This software has been developed as part of the ECFAS (European Coastal Flood Awareness System) project by the Geo-Environmental Cartography and Remote Sensing Group (CGAT) at the Universitat Politècnica de València, Spain. It contains the core algorithm for shoreline extraction at a sub-pixel level. For detailed information on the tool and the algorithm, please refer to the following papers:
 
 - Palomar-Vázquez, J.; Pardo-Pascual, J.E.; Almonacid-Caballer, J.; Cabezas-Rabadán, C. Shoreline Analysis and Extraction Tool (SAET): A New Tool for the Automatic Extraction of Satellite-Derived Shorelines with Subpixel Accuracy. *Remote Sens.* 2023, 15, 3198. https://doi.org/10.3390/rs15123198
 - Pardo-Pascual, J.E., Almonacid-Caballer, J., Ruiz, L.A., Palomar-Vázquez, J. Automatic extraction of shorelines from Landsat TM and ETM multi-temporal images with subpixel precision. *Remote Sensing of Environment*, 123, pp. 1-11, 2012. https://doi.org/10.1016/j.rse.2012.02.024
@@ -60,7 +60,7 @@ In this image, we can see the general workflow of the algorithm. The parameters 
 
 The tool uses Sentinel 2, Landsat 8 and Landsat 9 images as input. In this way, the first thing needed is to have username and password from Copernicus Scihub and USGS Landsat Explorer servers:
 
-- **Access USGS Landsat Explorer service:** In this case, you need to do two things: register on the Landsat Explorer website and make a request to access the service “machine to machine” (m2m). For the first requirement, you must register on the website https://ers.cr.usgs.gov/register. Once you have your credentials, access the website https://earthexplorer.usgs.gov, and go to your profile settings. Click on the button “Go to Profile” and finally, on the option “Access Request”. There you can make a new request to the m2m service by filling out a form.
+- **Access USGS Landsat Explorer service:** In this case, you need to do two things: to register on the Landsat Explorer website and to make a request to access the service “machine to machine” (m2m). For the first requirement, you must register on the website https://ers.cr.usgs.gov/register. Once you have your credentials, access the website https://earthexplorer.usgs.gov, and go to your profile settings. Click on the button “Go to Profile” and finally, on the option “Access Request”. There you can make a new request to the m2m service by filling out a form.
 Once you have your credentials for both data source providers you can edit the file “saet_config.py” (see structure section) by changing the asterisks with your own credentials:
 
 ```
@@ -73,7 +73,7 @@ os.environ['PASS_USGS'] = os.getenv('PASS_USGS', '********')
 ## 4. FOLDER STRUCTURE<a name="id4"> </a><small>[(index)](#id0)</small>
 
 The folder SAET contains the following files and subfolders:
--	saet_run.py. Main script. This script must be executed in command line mode.
+-	saet_run.py. Main script. It must be executed in command line mode.
 -	saet_tools.py. Module that contains all functions needed to run the algorithm.
 -	polynomial.py. Module with extra functions for surface interpolation.
 -	saet_config. py file that contains several configuration variables (credentials for the satellite imagery servers, folder structure for results, etc.).
@@ -90,7 +90,7 @@ The folder SAET contains the following files and subfolders:
 
 ## Configuration file
 
-The configuration file (saet_config.py) contains some sections that allows controlling several aspects to access the imagery servers and modify the algorithm workflow. Normally it will not be needed to modify this file apart from the credential values, but if you want to do it, take in account this explanation about each section:
+The configuration file (saet_config.py) contains some parameters that allow controlling the access to the imagery servers and modify the algorithm workflow. Normally it will not be needed to modify this file apart from the credential values, but if you want to do it, you must take in account this explanation about each section:
 -	Section “credentials”. **Change the asterisks characters by your own credentials to properly run SAET (see section 3).**
 -	Section “home folder”. It represents the path where SAET will be installed. All other subfolders will depend on it by employing relative paths.
 -	Section “auxiliary data”. Relative path to the auxiliar data needed to SAET. The name of each shapefile can be changed if it is required.
@@ -168,7 +168,7 @@ optional arguments:
 
 ## Examples of use
 
-* Searching for all Sentinel-2 (level 1C) scenes inside an area of interest (tile 30SYJ), with less than 15% of cloud coverage and within a date range 01-04-2023 to 30-04-2023 (central date or storm peak 15-04-2023):
+* Searching for all Sentinel-2 (level 1C) scenes inside an area of interest (tile 30SYJ), with less than 15% of cloud coverage and within the date range from 01-04-2023 to 30-04-2023 (central date or storm peak 15-04-2023):
 ```
 python saet_run.py --rm=os --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=15 --lp=NONE --ll=NONE --sp=S2MSI1C --sl=30SYJ
 
@@ -207,7 +207,7 @@ Once the searching results have been obtained, if we want to download and proces
 python saet_run.py --rm=dp --fp=NONE --sd=20230401 --cd=20230415 --ed=20230430 --mc=15 --lp=NONE --ll=NONE --sp=S2MSI1C --sl=30SYJ --np=1,2
 ```
 
-In case we want to reprocess any previous downloaded image, for example using other water index or thresholding method, we only have to change these parameters and repeat the same command line but changing the run mode (--rm) to “op”. In this case, the images previously downloaded will be reprocessed.
+In case we want to reprocess previous downloaded images, for example by using other water index or thresholding method, we only have to change these parameters and repeat the same command line but changing the run mode (--rm) to “op”. In this case, the images previously downloaded will be reprocessed.
 
 ```
 python saet_run.py --rm=op --wi=mndwi
@@ -229,8 +229,8 @@ SAET will display a list of images already stored in the output data folder and 
 Next picture shows the workflow to run SAET in the most convenient way. The recommendation is:
 * Select your area of analysis and product of interest. The file map_director.qgz (QGIS) will be very useful to decide which scene (Landsat) or tile (Sentinel-2) will be used.
 * Always start with the "only searching mode".
-* If you are going to analyse just a few images (one or two images before and after the storm peak date), you can follow with the "downloading and processing" run mode.
-* In case you want to analyse a time series and in order to prevent conexion problems form the serves, it is recommendable to use "only download" run mode instead "downloading and processing".
+* If you are going to analyse just a few images (for example, one or two images before and after the storm peak date), you can follow with the "downloading and processing" run mode.
+* In case you want to analyse a time series and in order to prevent connection problems form the serves, it is encouraged to use "only download" run mode instead "downloading and processing".
 * Anyway, if you want to reprocess any image previously downloaded, you can use the "only processing" run mode. This mode will allow you to reprocess the images with other parameters (water index, threshol method, etc.) without having to download them again.
 * Only in case you want to analyse Sentinel-2 images and some of them are in "offline" mode, you can use the "Offline S2 activation" run mode, along with the parameter "--oa", first time with the value "--oa=activate" to activate the product, and from time to time, with the value "--oa=check", to check if the products are online. **Note:** Only S2 online products can be downloaded. Once a product has been activated, it remains in online mode just for a few days. Finally, if you prefer, you also can do the activation process from the Landsat Earth Explorer platform.
 
@@ -276,17 +276,17 @@ After running the tool, a new structure of folders will be created inside the SA
 
 -	The algorithm uses the cloud mask information. For L8-9, this information is stored in a .tif file, whereas for S2, it depends on the product (.gml format for the product 1C, and .tif format for the product 2A). This situation can change in the next months and some changes may be needed (see https://sentinels.copernicus.eu/web/sentinel/-/copernicus-sentinel-2-major-products-upgrade-upcoming).
 
--	The shapefiles inside the folder “aux_data” are mandatory to make work the tool. If we need to change (removing, updating) some in the “beaches.shp” file, it is possible, but do not forget to maintain the field “BEACH_CODE” with unique identifiers.
+-	The shapefiles inside the folder “aux_data” are mandatory to make the tool work. If modifications (removing, updating) in the “beaches.shp” file are needed do not forget to maintain the field “BEACH_CODE” with unique identifiers.
 
--	The final shoreline is provided in two versions (line and point) and has the field “BEACH_CODE” to facilitate the posterior analysis comparing the same beach section from different dates.
+-	The final shoreline is provided in two versions (line and point) and it has the field “BEACH_CODE” to facilitate the subsequent analysis by comparing the same beach section on different dates.
 
--	One good way to begin using the tool is trying to see what are the single L8-9 or S2 scenes that we are interested in. For this goal, we can use the grid shapefiles for L8-9 or S2 (“aux_data” folder) and other online viewers, like “OE Browser” (https://apps.sentinel-hub.com/eo-browser). In this website we can see the needed product, their footprints, and their available dates and cloud coverage. Once we know this information, we can use the “searching by scenes mode” in the tool. Anyway, if you decide to use “quicklook” visualization, the .html file will help you to decide the best images for your purposes. On the contrary, if we use the “searching by footprint mode”, the algorithm will search for the L8-9 or S2 nearest to the central data provided. This mode, sometimes, especially in S2 scenes can download more scenes than are needed due to the ROI can overlap with more than one S2 footprint, which leads to a longer downloading process time.
+-	One good way to begin using the tool is trying to see what are the L8-9 or S2 scenes that we are interested in. For this goal, we can use the grid shapefiles for L8-9 or S2 (“aux_data” folder) and other online viewers, like “OE Browser” (https://apps.sentinel-hub.com/eo-browser). In this website we can see the needed products, their footprints, and their available dates and cloud coverage. Once we know this information, we can use the “searching by scenes mode” in the tool. Anyway, if you decide to use the “quicklook” visualization, the .html file will help you to decide the best images for your purposes. On the contrary, if we use the “searching by footprint mode”, the algorithm will search for the L8-9 or S2 nearest to the central data provided. This mode, sometimes, especially in S2 scenes can download more scenes than needed due to the fact that the ROI can overlap with more than one S2 footprint, which leads to a longer downloading time.
 
 - To avoid wasting time, can start using the tool firstly in “searching” mode and also in “searching by scenes mode”.
 
 - If we request the Sentinel-2 last images, could be possible that we only have access to the 1C product (2A product is not immediately available, and it is needed to spend some time to have access to this product). On the other hand, we also need to consider that 1C product has a cloud mask of lower quality than 2A product.
 
-- Sentinel-2 products older than 18 months (level 2A) or 12 months (level 1C) are not available directly. They are in offline mode. So, if you want to download these products, you must active them before. You can do this directly from the Copernicus Open Access Hub platform (https://scihub.copernicus.eu/), following the instructions that appear on “data restoration” section.
+- Sentinel-2 products older than 18 months (level 2A) or 12 months (level 1C) are not directly available as they appear in offline mode. So, if you want to download these products you must active them before. You can do this directly from the Copernicus Open Access Hub platform (https://scihub.copernicus.eu/), following the instructions that appear on “data restoration” section.
  (https://scihub.copernicus.eu/userguide/DataRestoration).
 You can do the same directly using SAET. Follow these steps:
     1. Run SAET in only search mode (--rm=os)
@@ -323,8 +323,8 @@ Once you have installed python (for example in “c:\python397_64”), follow th
 2. In this window, install the library “virtualenv” by typing 'pip install virtualenv'.
 3. Close the command prompt window.
 4. Create a new folder called "SAET_installation" (the name does not matter) in whatever location (for example 'c:\SAET_installation').
-5. Copy all files of SAET into this folder.
-6. Open a new command prompt window. This time, change the current folder to the SAET installation folder (type 'cd C:\SAET_installation')
+5. Copy all SAET files into this folder.
+6. Open a new command prompt window and change the current folder to the SAET installation folder (type 'cd C:\SAET_installation')
 7. In the command prompt type: 'c:\Python397_64\Scripts\virtualenv env' ("env" is the name of a new virtual environment). This will create a new folder named “env”.
 8. Activate the new virtual environment by typing: 'env\Scripts\activate'.
 9. Install all needed libraries one by one typing 'pip install -r requirements_windows.txt' (for windows), or 'pip install -r requirements_linux.txt' (for linux).
