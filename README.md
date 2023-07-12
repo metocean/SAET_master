@@ -26,7 +26,7 @@ SAET is a software for the extraction and analysis of shorelines using satellite
 - Activation of offline Sentinel-2 images.
 - Output of the shoreline positions in shapefile format (point and line) in the WGS84 spatial reference system (EPSG: 4326).
 
-This software has been developed as part of the ECFAS (European Coastal Flood Awareness System) project by the Geo-Environmental Cartography and Remote Sensing Group (CGAT) at the Universitat Politècnica de València, Spain. It contains the core algorithm for shoreline extraction at a sub-pixel level. For detailed information on the tool and the algorithm, please refer to the following papers:
+This software has been developed as part of the H2020 EU project ECFAS (a proof-of-concept for the implementation of a European Copernicus Coastal Flood Awareness System, GA n° 101004211) by the Geo-Environmental Cartography and Remote Sensing Group (CGAT) at the Universitat Politècnica de València, Spain. It contains the core algorithm for shoreline extraction at a sub-pixel level. For detailed information on the tool and the algorithm, please refer to the following papers:
 
 - Palomar-Vázquez, J.; Pardo-Pascual, J.E.; Almonacid-Caballer, J.; Cabezas-Rabadán, C. Shoreline Analysis and Extraction Tool (SAET): A New Tool for the Automatic Extraction of Satellite-Derived Shorelines with Subpixel Accuracy. *Remote Sens.* 2023, 15, 3198. https://doi.org/10.3390/rs15123198
 - Pardo-Pascual, J.E., Almonacid-Caballer, J., Ruiz, L.A., Palomar-Vázquez, J. Automatic extraction of shorelines from Landsat TM and ETM multi-temporal images with subpixel precision. *Remote Sensing of Environment*, 123, 2012. https://doi.org/10.1016/j.rse.2012.02.024
@@ -40,6 +40,8 @@ This software has been developed as part of the ECFAS (European Coastal Flood Aw
 
 ## Copyright and License
 This open-source software is distributed under the GNU license and is the copyright of the UPV. It has been developed within the framework of the European ECFAS project by the following authors: Jesús Palomar Vázquez, Jaime Almonacid Caballer, Josep E. Pardo Pascual, and Carlos Cabezas Rabadán.
+
+This project has received funding from the Horizon 2020 research and innovation programme under grant agreement No. 101004211
 
 Please note that this software is designed specifically for the automatic extraction of shorelines in pre-storm and post-storm events and is not intended for massive extraction purposes.
 
